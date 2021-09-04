@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn-add-note">Add new note</button>
+
+    <div id="addNote" style="display: none;">
+        Title:      <input type="text" id="input-title"/>
+        Content:    <input type="text" id="input-content"/>
+        <button id="btnSubmit">Submit</button>
+    </div>
+
+    <br>
+    <div class="update" style="display: none;">
+        <h3>To update: </h3>
+        Title:      <input type="text" id="input-title-update"/>
+        Content:    <input type="text" id="input-content-update"/>
+        <button id="submit-update">Update</button>
+    </div>
+
+    <h3>Notes</h3>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th style="display: none">id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aqui se llena dinamicamente -->
+        </tbody>
+    </table>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="notes.js"></script>
+
+    <script>
+        // Ahora colorea la tabla
+        
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="jquery-form-validation.css" type="text/css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/my-handling-form-page" method="post">
+      <ul>
+        <li>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name" />
+        </li>
+        <li>
+          <label for="mail">E-mail:</label>
+          <input type="email" id="mail" name="user_email" />
+        </li>
+        <li>
+          <label for="msg">Message:</label>
+          <textarea id="msg" name="user_message"></textarea>
+        </li>
+        <li class="button">
+            <button type="submit" id="submit">Send</button>
+        </li>
+      </ul>
+     
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <script>
+        
+       /*No es necesario agregarle a las funciones inputs y errors pues ya son globales, sin embargo, las mando como parametros para dejar implicito que la funcion requiere de esos dos parametros*/
+       
+        $(() => {
+            let inputs = [$('#name'),$('#mail'), $('#msg')];
+            let errors = [];
+
+            $('#submit').click( (event) =>{
+
+                errors.length = 0;      // Limpia el arreglo de errores
+                if(inputsAreEmpty(inputs,errors)){   // Retonar 1 si se detectaron errores
+                    for(let e of errors){   // 
+                        alert(`Hay entradas sin enviar en: ${e.input.prop("name")}`);
+                    }
+                }
+                else
+                    alert("Formulario enviado");
+
+                event.preventDefault(); 
+            });
+
+            // Recibe las entradas a verificar y un arreglo en donde almacenar los posibles errores
+            // Crea objetos de tipo error y los agrega al arreglo global de errores.
+            // Retorna 1 si encontro errores.
+            function inputsAreEmpty(inputs, errors){
+                for(let input of inputs){
+                    if(input.val() == ""){
+                        let error = {};         // Crea un nuevo objeto
+                        error.input = input;    // Crea la attributo con la referencia al input
+                        error.isEmpty = true;   // Crea el attributo
+                        errors.push(error);     // Agregalo a la lista de errores
+                    }
+                }
+                
+                for(let e of errors){
+                    if(e.isEmpty) return 1;     // Si hubo errores, entonces notificalo
+                }  
+
+                return 0;
+            }
+        });
+
+        
+    </script>
+
+  </body>
+</html>
