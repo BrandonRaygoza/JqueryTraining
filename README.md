@@ -1,2 +1,2 @@
 # JqueryTraining
-Jquery training Integon
+jQuery training Integon
